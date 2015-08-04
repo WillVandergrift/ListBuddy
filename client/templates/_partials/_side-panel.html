@@ -1,0 +1,28 @@
+<template name="sidePanel">
+    <aside class="sm-side">
+        <div class="user-head">
+            <a class="inbox-avatar" href="javascript:;">
+                <img  width="64" hieght="64" src="/images/uploads/profile-will.jpg">
+            </a>
+            <div class="user-name">
+                <h5><a href="#">Will Vandergrift</a></h5>
+                <span><a href="#">Will.Vandergrift@Outlook.com</a></span>
+            </div>
+            <a class="mail-dropdown pull-right" href="javascript:;">
+                <i class="fa fa-chevron-down"></i>
+            </a>
+        </div>
+        <div class="inbox-body">
+            <a href="{{pathFor 'listCreate'}}" title="New List" class="btn btn-create-list">
+                Create List
+            </a>
+        </div>
+        <ul class="inbox-nav inbox-divider">
+            {{#each lists}}
+                <li>
+                    <a href="{{pathFor 'listIndex' _id=this._id}}">{{name}}<span class="label label-info pull-right">{{listItemCount this._id}}</span></a>
+                </li>
+            {{/each}}
+        </ul>
+    </aside>
+</template>

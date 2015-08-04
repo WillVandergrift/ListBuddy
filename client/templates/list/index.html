@@ -1,0 +1,64 @@
+<template name="listIndex">
+    <aside class="lg-side">
+        <div class="inbox-head">
+            <h3>{{name}} - {{money listPrice}}</h3>
+            <form action="#" class="pull-right position">
+                <div class="input-append col-sm-12">
+                    <input type="text" class="sr-input" placeholder="Search List">
+                    <button class="btn sr-btn" type="button"><i class="fa fa-search"></i></button>
+                </div>
+            </form>
+        </div>
+        <div class="inbox-body">
+            <div class="mail-option">
+                <form class="new-list-item">
+                    <div class="form-group">
+                        <input class="form-control typeahead"
+                               name="txtItemAdd" type="text"
+                               placeholder="Add new item..."
+                               autocomplete="off" spellcheck="off"
+                               data-value-key="name"
+                               data-template ="typeAhead"
+                               data-selected="selected"
+                               data-source="typeAhead"/>
+                    </div>
+                </form>
+            </div>
+            <table class="table table-inbox table-hover">
+                <tbody>
+                {{#each listItems this._id}}
+                    <tr class="list-item">
+                        <td class="list-item-checkbox">
+                            <div class="checkbox">
+                                <label class="list-item-checkbox">
+                                    <input type="checkbox" checked="{{isComplete}}">
+                                    <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                                </label>
+                            </div>
+                        </td>
+                        <td class="list-item-image">
+                            <a class="inbox-avatar" href="javascript:;">
+                                <img  width="48" src="{{thumbnail}}">
+                            </a>
+                        </td>
+                        <td class="text-left">{{name}}</td>
+                        <td class="list-item-buttons">
+                            <button type="button" class="list-item-btn-delete btn btn-danger"><i class="fa fa-trash"></i></button>
+                        </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </aside>
+</template>
+
+<template name="typeAhead">
+    <div class="container ta-container">
+        <div class="row">
+            <img class="ta-thumbnail col-md-4" src="{{thumbnail}}" />
+            <p class="ta-name col-md-5">{{name}}</p>
+            <p class="ta-price col-md-3 pull-right">{{money price}}</p>
+        </div>
+    </div>
+</template>
